@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer page</title>
+<script type="text/javascript" src="${context.contextPath}/js/jquery.min.js"></script>
+<script>
+	function before() {
+		$('#resultDiv').html('waiting...');
+	}
+	
+	function execReportBatch() {
+		before();
+		var key = $('#selectedExecuteReportName').val();
+		var url = 'dev/executeReportBatch/' + key;
+		$.get(url, function(result) {
+			$('#resultDiv').html(JSON.stringify(result));
+		});
+	}
+</script>
+</head>
+<body>
+	<h1>Developer page</h1>
+	<br>
+	<br>
+	<br>
+	<p>functions
+	<div>
+		<#if enviroment == "dev">
+		<a href="javascript:execReportBatch()">Execute report batch</a>:
+		<select id="selectedExecuteReportName">
+			 <#list reportBatchNames as name>
+			<option value="${name}" selected="selected">${name}</option>
+			 </#list>
+		</select>
+		</#if>
+		<#if enviroment != "dev">
+			Forbidden ！Please set global.enviroment to 'dev'
+		</#if>
+	</div>
+	<br>
+	<br>
+	<br>
+	<p>result
+	<div id="resultDiv"></div>
+</body>
+</html>

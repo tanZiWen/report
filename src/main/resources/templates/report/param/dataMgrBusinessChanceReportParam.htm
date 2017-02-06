@@ -1,0 +1,97 @@
+<div class="form-group m-l-30">
+	<label for="orgCode">分公司:</label> 
+	<select name="orgCode" class="form-control selectpicker show-tick" id="orgCode" data-width="150px" data-size='8'  data-live-search="true">
+		<option value="">请选择</option>
+	</select>
+</div>
+<div class="form-group m-l-30">
+	<label for="workGroup">顾问分组:</label> 
+	<select name="workGroup" class="form-control selectpicker show-tick" id="workGroup" data-width="150px" data-size='8'  data-live-search="true" >
+		<option value="">请选择</option>
+	</select>
+</div>
+<div class="form-group m-l-30">
+	<label for="user">顾问登录名(姓名):</label> 
+	<select name="user" class="form-control selectpicker show-tick" id="user" data-width="150px" data-size='8'  data-live-search="true">
+		<option value="">请选择</option>
+	</select>
+</div>
+
+<script>
+	$(function() {
+		var url = "${context.contextPath}/rpt/dataMgrBusinessChanceReportParam/loadParam";
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: url,
+			success: function(data) {
+				$('#orgCode option').remove();
+		        $('#orgCode').append('<option value="">请选择</option>');
+				$.each(data.rootOrgList, function(key, value) {
+					$('#orgCode').append('<option value='+value.code+'>'+value.name+'</option>');
+				});
+				
+				$('#workGroup option').remove();
+		        $('#workGroup').append('<option value="">请选择</option>');
+				$.each(data.workGourpList, function(key, value) {
+					$('#workGroup').append('<option value='+value._id+'>'+value.name+'</option>');
+				});
+				
+				$('#user option').remove();
+		        $('#user').append('<option value="">请选择</option>');
+				$.each(data.userList, function(key, value) {
+					$('#user').append('<option value='+value._id+'>'+value.username+'('+value.realName+')</option>');
+				});
+				
+				$('.selectpicker').selectpicker('refresh');
+			}
+		});
+		
+		
+		
+		$('#orgCode').change(function() {
+			var orgCode = $(this).val();
+			var url = "${context.contextPath}/rpt/dataMgrBusinessChanceReportParam/loadParam?orgCodeValue="+orgCode;
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: url,
+				success: function(data) {
+					$('#workGroup option').remove();
+			        $('#workGroup').append('<option value="">请选择</option>');
+					$.each(data.workGourpList, function(key, value) {
+						$('#workGroup').append('<option value='+value._id+'>'+value.name+'</option>');
+					});
+					
+					$('#user option').remove();
+			        $('#user').append('<option value="">请选择</option>');
+					$.each(data.userList, function(key, value) {
+						$('#user').append('<option value='+value._id+'>'+value.username+'('+value.realName+')</option>');
+					});
+					
+					$('.selectpicker').selectpicker('refresh');
+				}
+			});
+		});
+		
+		$('#workGroup').change(function() {
+			var orgCode = $('#orgCode').val();
+			var workGroup = $(this).val();
+			var url = "${context.contextPath}/rpt/dataMgrBusinessChanceReportParam/loadParam?workGroupValue="+workGroup+"&orgCodeValue="+orgCode;
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: url,
+				success: function(data) {
+					$('#user option').remove();
+			        $('#user').append('<option value="">请选择</option>');
+					$.each(data.userList, function(key, value) {
+						$('#user').append('<option value='+value._id+'>'+value.username+'('+value.realName+')</option>');
+					});
+					
+					$('.selectpicker').selectpicker('refresh');
+				}
+			});
+		});
+	})
+</script>

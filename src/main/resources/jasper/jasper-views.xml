@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="testReport"
+		class="com.prosnav.report.core.JasperView">
+		<property name="url" value="classpath:jasper/templates/test.jasper"></property>
+	</bean>
+	
+	<bean id="auditBusinessChanceReport"
+		class="com.prosnav.report.core.JasperView">
+		<property name="url" value="classpath:jasper/templates/auditBusinessChanceReport.jasper"></property>
+	</bean>
+	
+	<bean id="dataWechatContactsStatReport"
+		class="com.prosnav.report.core.JasperView">
+		<property name="url" value="classpath:jasper/templates/wechatContactsStat.jasper"></property>
+	</bean>
+	
+	<bean id="workGroupBusinessStatusReport"
+		class="com.prosnav.report.core.JasperView">
+		<property name="url" value="classpath:jasper/templates/workGroupBusinessStatusReport.jasper"></property>
+	</bean>
+	
+	<bean id="kpiIndicatorsReport"
+		class="com.prosnav.report.core.JasperView">
+		<property name="url" value="classpath:jasper/templates/kpiIndicatorsReport.jasper"></property>
+	</bean>
+	
+</beans>

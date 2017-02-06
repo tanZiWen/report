@@ -1,0 +1,144 @@
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+  /*background-color: #eeeeee;*/
+}
+
+.m-t--5 {
+	margin-top: -5px;
+}
+
+.m-t-5 {
+	margin-top: 5px;
+}
+
+.m-t-10 {
+	margin-top: 10px;
+}
+
+.m-t-15 {
+	margin-top: 15px;
+}
+
+.m-t-20 {
+	margin-top: 20px;
+}
+
+.m-t-25 {
+	margin-top: 25px;
+}
+
+.m-t-30 {
+	margin-top: 30px;
+}
+.m-b-5 {
+	margin-bottom: 5px;
+}
+
+.m-b-10 {
+	margin-bottom: 10px;
+}
+
+.m-b-15 {
+	margin-bottom: 15px;
+}
+
+.m-b-20 {
+	margin-bottom: 20px;
+}
+
+.m-b-25 {
+	margin-bottom: 25px;
+}
+
+.m-b-30 {
+	margin-bottom: 30px;
+}
+
+.m-l-5 {
+	margin-left: 5px;
+}
+
+.m-l-10 {
+	margin-left: 10px;
+}
+
+.m-l-15 {
+	margin-left: 15px;
+}
+
+.m-l-20 {
+	margin-left: 20px;
+}
+
+.m-l-25 {
+	margin-left: 25px;
+}
+
+.m-l-30 {
+	margin-left: 30px;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: #2C3E50;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+#wrap > .container {
+  padding: 60px 15px 0;
+}
+
+#wrap .navbar {
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  display: block;
+  clear: both;
+}
+
+.divider-danger {
+  background-color: #a52410;
+}
+
+.divider-primary {
+  background-color: #269abc;
+}
+
+.divider-default {
+  background-color: #cccccc;
+}
+
+.divider-white {
+  background-color: #FFFFFF;
+}
+
+.divider-gray {
+  background-color: #666666;
+}
+
+.divider-grass {
+  background-color: #8CC152;
+}

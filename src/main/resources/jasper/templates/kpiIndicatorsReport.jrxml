@@ -1,0 +1,1717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="KPIIndicatorsReport" language="groovy" pageWidth="1090" pageHeight="842" columnWidth="1050" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="343823a3-d156-4c87-bc60-3ee40cd574ce">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="reportDateBegin" class="java.lang.String"/>
+	<parameter name="reportDateEnd" class="java.lang.String"/>
+	<queryString language="MongoDbQuery">
+		<![CDATA[{
+collectionName: 'kpiIndicators'
+}]]>
+	</queryString>
+	<field name="bc20Count" class="java.lang.Integer"/>
+	<field name="bc40Count" class="java.lang.Integer"/>
+	<field name="bc60Count" class="java.lang.Integer"/>
+	<field name="bc80Count" class="java.lang.Integer"/>
+	<field name="busySignalCount" class="java.lang.Integer"/>
+	<field name="closedCount" class="java.lang.Integer"/>
+	<field name="connectedCount" class="java.lang.Integer"/>
+	<field name="crownedVipCount" class="java.lang.Integer"/>
+	<field name="ctime" class="java.util.Date"/>
+	<field name="dealCount" class="java.lang.Integer"/>
+	<field name="diamondVipCount" class="java.lang.Integer"/>
+	<field name="faxCount" class="java.lang.Integer"/>
+	<field name="groupId" class="java.lang.Long"/>
+	<field name="groupName" class="java.lang.String"/>
+	<field name="noResponseCount" class="java.lang.Integer"/>
+	<field name="potentialCount" class="java.lang.Integer"/>
+	<field name="proxyConnectedCount" class="java.lang.Integer"/>
+	<field name="reAssignCount" class="java.lang.Integer"/>
+	<field name="refusedCount" class="java.lang.Integer"/>
+	<field name="reportDay" class="java.lang.Integer"/>
+	<field name="reportMonth" class="java.lang.Integer"/>
+	<field name="reportYear" class="java.lang.Integer"/>
+	<field name="userId" class="java.lang.Long"/>
+	<field name="userRealName" class="java.lang.String"/>
+	<field name="username" class="java.lang.String"/>
+	<field name="vacantCount" class="java.lang.Integer"/>
+	<field name="vipCount" class="java.lang.Integer"/>
+	<variable name="sumPotential" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{potentialCount}]]></variableExpression>
+	</variable>
+	<variable name="sumBc20" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc20Count}]]></variableExpression>
+	</variable>
+	<variable name="sumBc40" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc40Count}]]></variableExpression>
+	</variable>
+	<variable name="sumBc60" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc60Count}]]></variableExpression>
+	</variable>
+	<variable name="sumBc80" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc80Count}]]></variableExpression>
+	</variable>
+	<variable name="sumDeal" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{dealCount}]]></variableExpression>
+	</variable>
+	<variable name="sumVip" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{dealCount}]]></variableExpression>
+	</variable>
+	<variable name="sumDiamondVip" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{diamondVipCount}]]></variableExpression>
+	</variable>
+	<variable name="sumCrownedVip" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{crownedVipCount}]]></variableExpression>
+	</variable>
+	<variable name="sumConnected" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{connectedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumProxyConnected" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{proxyConnectedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumNoResponse" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{noResponseCount}]]></variableExpression>
+	</variable>
+	<variable name="sumClosed" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{closedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumBusySignal" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{busySignalCount}]]></variableExpression>
+	</variable>
+	<variable name="sumRefused" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{refusedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumVacant" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{vacantCount}]]></variableExpression>
+	</variable>
+	<variable name="sumFax" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{faxCount}]]></variableExpression>
+	</variable>
+	<variable name="avgPotential" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{potentialCount}]]></variableExpression>
+	</variable>
+	<variable name="avgBc20" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{bc20Count}]]></variableExpression>
+	</variable>
+	<variable name="avgBc40" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{bc40Count}]]></variableExpression>
+	</variable>
+	<variable name="avgBc60" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{bc60Count}]]></variableExpression>
+	</variable>
+	<variable name="avgBc80" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{bc80Count}]]></variableExpression>
+	</variable>
+	<variable name="avgDeal" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{dealCount}]]></variableExpression>
+	</variable>
+	<variable name="avgVip" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{vipCount}]]></variableExpression>
+	</variable>
+	<variable name="avgDiamondVip" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{diamondVipCount}]]></variableExpression>
+	</variable>
+	<variable name="avgCrownedVip" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{crownedVipCount}]]></variableExpression>
+	</variable>
+	<variable name="avgConnected" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{connectedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgProxyConnected" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{proxyConnectedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgNoResponse" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{noResponseCount}]]></variableExpression>
+	</variable>
+	<variable name="avgClosed" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{closedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgBusySignal" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{busySignalCount}]]></variableExpression>
+	</variable>
+	<variable name="avgRefused" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{refusedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgVacant" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{vacantCount}]]></variableExpression>
+	</variable>
+	<variable name="avgFax" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{faxCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllPotential" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{potentialCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllbc20" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc20Count}]]></variableExpression>
+	</variable>
+	<variable name="sumAllbc40" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc40Count}]]></variableExpression>
+	</variable>
+	<variable name="sumAllbc60" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc60Count}]]></variableExpression>
+	</variable>
+	<variable name="sumAllbc80" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{bc80Count}]]></variableExpression>
+	</variable>
+	<variable name="sumAllDeal" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{dealCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllVip" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{vipCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllDimondVip" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{diamondVipCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllCrownedVip" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{crownedVipCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllConnected" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{connectedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllProxyConnected" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{proxyConnectedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllNoResponse" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{noResponseCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllClosed" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{closedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllBusySignal" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{busySignalCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllRefused" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{refusedCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllVacant" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{vacantCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllFax" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{faxCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllPotential" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{potentialCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllbc20" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{bc20Count}]]></variableExpression>
+	</variable>
+	<variable name="avgAllbc40" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{bc40Count}]]></variableExpression>
+	</variable>
+	<variable name="avgAllbc60" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{bc60Count}]]></variableExpression>
+	</variable>
+	<variable name="avgAllbc80" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{bc80Count}]]></variableExpression>
+	</variable>
+	<variable name="avgAllDeal" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{dealCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllVip" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{vipCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllDimondVip" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{diamondVipCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllCrownedVip" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{crownedVipCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllConnected" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{connectedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllProxyConnected" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{proxyConnectedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllNoResponse" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{noResponseCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllClosed" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{closedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllBusySignal" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{busySignalCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllRefused" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{refusedCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllVacant" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{vacantCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllFax" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{faxCount}]]></variableExpression>
+	</variable>
+	<variable name="sumReAssign" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Sum">
+		<variableExpression><![CDATA[$F{reAssignCount}]]></variableExpression>
+	</variable>
+	<variable name="avgReAssign" class="java.lang.Integer" resetType="Group" resetGroup="groupId" calculation="Average">
+		<variableExpression><![CDATA[$F{reAssignCount}]]></variableExpression>
+	</variable>
+	<variable name="sumAllReAssign" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{reAssignCount}]]></variableExpression>
+	</variable>
+	<variable name="avgAllReAssign" class="java.lang.Integer" calculation="Average">
+		<variableExpression><![CDATA[$F{reAssignCount}]]></variableExpression>
+	</variable>
+	<group name="groupId">
+		<groupExpression><![CDATA[$F{groupId}]]></groupExpression>
+		<groupFooter>
+			<band height="44">
+				<staticText>
+					<reportElement x="63" y="0" width="52" height="22" uuid="932c8561-ffe8-4b6b-950e-3fea900ccd86"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[总数]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="63" y="22" width="52" height="22" uuid="6d97b71f-aada-4b5b-8396-69f387ec4a7d"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[均数]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="115" y="0" width="52" height="22" uuid="bb3f50ad-36d4-4202-a29f-46bb23553b21"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumPotential}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="167" y="0" width="52" height="22" uuid="94f502fe-f1ae-4e73-92c7-034f773b863e"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumBc20}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="219" y="0" width="52" height="22" uuid="53e791e1-b7bd-4545-bfa6-1e45c68811fb"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumBc40}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="271" y="0" width="52" height="22" uuid="8e9eeb1b-a5b8-4556-b879-cd1226565c44"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumBc60}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="323" y="0" width="52" height="22" uuid="f9fdb879-82d6-452d-83aa-cdbdbd61cb69"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumBc80}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="375" y="0" width="52" height="22" uuid="eaa6aae9-df7b-4e1c-99ed-76aaae7eccbc"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumDeal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="427" y="0" width="52" height="22" uuid="a6b7d924-01f5-40e5-b30f-158f19d82996"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumVip}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="479" y="0" width="52" height="22" uuid="ac74a3b1-efc2-4099-af75-92cb389c9de2"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumDiamondVip}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="531" y="0" width="52" height="22" uuid="189e1838-8ef3-4044-a08b-f60f6bd40eee"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumCrownedVip}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="583" y="0" width="52" height="22" uuid="6f1c3552-4424-467b-9fd6-4b079451de20"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumConnected}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="635" y="0" width="52" height="22" uuid="b8e771af-c053-4bd6-a224-7ebe7bcba239"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumProxyConnected}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="687" y="0" width="52" height="22" uuid="16ce0c46-a842-4a69-9a49-2c69eac20bbb"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumNoResponse}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="739" y="0" width="52" height="22" uuid="7001bb59-ea40-4de0-82e3-a654b089b88e"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumClosed}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="791" y="0" width="52" height="22" uuid="b285d9d1-bdad-46bf-b297-84db65061d0b"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumBusySignal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="843" y="0" width="52" height="22" uuid="16fc97ec-4e43-49c8-a698-bd18b6343827"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumRefused}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="895" y="0" width="52" height="22" uuid="5c686eb2-0d8d-4526-adfb-39491185e384"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumVacant}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="947" y="0" width="51" height="22" uuid="30ccbb8d-b9af-4ccb-80f4-ccae1cead672"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumFax}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="115" y="22" width="52" height="22" uuid="e5ca96c5-2269-4eb0-83e9-77aec1d329ce"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgPotential}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="167" y="22" width="52" height="22" uuid="3b4cca76-f361-4550-8ddd-36d845543c80"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgBc20}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="219" y="22" width="52" height="22" uuid="b4433e69-7734-4d19-a47a-cdb0d2706973"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgBc40}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="271" y="22" width="52" height="22" uuid="e81581cb-b77a-4cca-9b53-7274143f29f5"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgBc60}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="323" y="22" width="52" height="22" uuid="dae5ce41-dd74-406b-8694-bb0118e022d7"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgBc80}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="375" y="22" width="52" height="22" uuid="c4458d50-9dc3-4b44-919b-c86976636ece"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgDeal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="427" y="22" width="52" height="22" uuid="c7b740d7-0fed-4a54-b74e-a47f24bbf08d"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgVip}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="479" y="22" width="52" height="22" uuid="f3e12417-9808-4764-9e76-2868715120c9"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgDiamondVip}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="531" y="22" width="52" height="22" uuid="cdd5bd5c-4a50-4509-a8f8-0e51034aa743"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgCrownedVip}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="583" y="22" width="52" height="22" uuid="2bb48b49-01f1-4f51-99ed-8be2c0b8c902"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgConnected}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="635" y="22" width="52" height="22" uuid="d797bf43-3cba-4c17-b587-3c45bcf85b54"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgProxyConnected}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="687" y="22" width="52" height="22" uuid="0e001724-c0fd-41f6-8ad1-3c99a575758e"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgNoResponse}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="739" y="22" width="52" height="22" uuid="3488cfce-5195-4f4b-8b8f-f748111d605a"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgClosed}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="791" y="22" width="52" height="22" uuid="d3aea57f-25bf-4334-86f9-a67ad8919164"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgBusySignal}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="895" y="22" width="52" height="22" uuid="62bc60bd-0df5-4b0e-93e9-7ccf4570cca1"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgVacant}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="843" y="22" width="52" height="22" uuid="2989c9b3-d785-49f0-adac-66c71e09d3e7"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgRefused}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="947" y="22" width="51" height="22" uuid="2633f5d3-235a-4a77-bc3c-4f47baa45e70"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgFax}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="-19" y="0" width="82" height="44" uuid="3e1e6d1a-7515-45a6-80c2-668a0fb28bf3"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="998" y="0" width="52" height="22" uuid="90a1e730-5243-40e4-ab4d-55cca12c370a"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{sumReAssign}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="998" y="22" width="52" height="22" uuid="f583fa73-9fa3-4f0a-8003-1b6ba6afb730"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{avgReAssign}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="998" height="53" uuid="0a166bea-f238-4662-9872-a53ed5ef0c76"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[KPI各项指标数据统计]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="403" height="26" uuid="49eef2bb-2883-4493-9a1f-849b0efdfdac"/>
+				<textFieldExpression><![CDATA["报表统计时间:      "+  $P{reportDateBegin} + "   -  "  +  $P{reportDateEnd}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="427" y="0" width="52" height="23" uuid="9865fe0f-5ce4-4b32-8fc6-2a1c7d746ff2"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VIP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="843" y="0" width="52" height="23" uuid="47091e0e-689b-4016-a5e7-b57e5dd4151a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[拒绝]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="0" width="52" height="23" uuid="09df47aa-4291-47cf-b2e3-ca9277188343"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[60商机]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="0" width="52" height="23" uuid="73793f07-7b42-4ef3-9ed8-1c36a9d8d3a8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[20商机]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="0" width="52" height="23" uuid="120cd01e-21b9-40c8-87aa-921e9890b000"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[40商机]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="0" width="52" height="23" uuid="50983a8d-9054-41da-a5c4-2d74794390e5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[80商机]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-19" y="0" width="82" height="23" uuid="aec7cbfd-1669-4540-91c1-083e1327417e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[组名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="635" y="0" width="52" height="23" uuid="7b3dbf67-9d95-4cdf-a54a-57193b8e25ce"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[代接]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="739" y="0" width="52" height="23" uuid="01e09f74-31cc-4c3d-9124-240f45af6a19"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[关机]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="947" y="0" width="51" height="23" uuid="0dfc9889-cbc8-461a-af12-3ed9b46609b3"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[传真]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="895" y="0" width="52" height="23" uuid="e1c51ef1-42be-43f2-8ea0-7e42d8c01a68"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[空号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="583" y="0" width="52" height="23" uuid="58b96795-d83b-4668-96ab-06a931e24f54"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[接通]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="687" y="0" width="52" height="23" uuid="4fd5803c-ded4-4878-a071-debe8b9d2368"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[无应答]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="531" y="0" width="52" height="23" uuid="e3084b6d-e4bc-41c5-8b79-5a051dc668e8"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[皇冠]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="63" y="0" width="52" height="23" uuid="bee675f2-e49c-4169-90b8-d9ca044dd3c0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[用户名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="0" width="52" height="23" uuid="2fb2a51f-adf0-4de4-b926-5691b7e37aef"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[钻石]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="0" width="52" height="23" uuid="3004ced5-3361-4302-a36d-d163c54c6d97"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[已成交]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="0" width="52" height="23" uuid="079c1706-64da-48ba-b562-29de659dc78a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[可跟进]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="791" y="0" width="52" height="23" uuid="5735df99-eb93-4e9e-9821-273254444b7f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[忙音]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="998" y="0" width="52" height="23" uuid="d355df21-e544-4c6c-9e8f-154a9fc39d8b"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[再分配]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="375" y="0" width="52" height="23" uuid="73848df6-c215-4139-aa26-067d9f2fd844"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dealCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="0" width="52" height="23" uuid="8b98b8a3-8320-4788-91b4-e143d4bb6db6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bc40Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="843" y="0" width="52" height="23" uuid="bf89bd52-096b-40fd-b4d6-7fb3b11e3ecc"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{refusedCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-19" y="0" width="82" height="23" uuid="63ccd6c4-1f89-460c-a5b1-cdb24ac559da"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{groupName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="687" y="0" width="52" height="23" uuid="17aaa152-c07d-4b03-b23a-1a18cb54da48"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{noResponseCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="0" width="52" height="23" uuid="d83bcd49-d9ac-4436-a198-74eb2f785334"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{potentialCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="52" height="23" uuid="27ca21cf-618c-4802-bbb4-11fc60e4a218"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{vipCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="0" width="52" height="23" uuid="024d370c-369e-46d6-a9e6-58f56d3e6038"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bc80Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="635" y="0" width="52" height="23" uuid="864a97d4-245e-43a4-b7ca-6ff494f274f5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{proxyConnectedCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="0" width="52" height="23" uuid="17a3a4cc-a01c-40cb-8a11-e05d23ba305f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{userRealName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="531" y="0" width="52" height="23" uuid="7b452384-0a04-4dd3-988c-d9b97ddd9588"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{crownedVipCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="52" height="23" uuid="67dedb65-8785-400a-ac06-05c48b483f67"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bc60Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="0" width="52" height="23" uuid="b8b9cdd4-e38e-45d8-9421-073d12072c3f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bc20Count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="0" width="52" height="23" uuid="d7b0fa62-3ae5-45bf-8934-46f93790aa00"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{diamondVipCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="895" y="0" width="52" height="23" uuid="53f55d48-d5df-4a10-b7f3-2ec3ad0ec602"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{vacantCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="947" y="0" width="51" height="23" uuid="aee52215-51c9-4cf9-96b5-b002a30d5493"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{faxCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="791" y="0" width="52" height="23" uuid="470ee443-02f8-4efc-af0c-25ebcc595495"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{busySignalCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="739" y="0" width="52" height="23" uuid="f2371107-428b-497f-bc12-948d8ec65480"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{closedCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="583" y="0" width="52" height="23" uuid="bc303e91-d879-4889-b11e-b51e3418e4a5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{connectedCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="998" y="0" width="52" height="23" uuid="06b73a9b-1a38-4cf3-8039-7104ef25f3a9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{reAssignCount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="63" y="0" width="52" height="21" uuid="998ce219-1d3b-4c57-9950-40ead3977d4e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[总计]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="0" width="52" height="21" uuid="f6141ab8-46a1-4aaa-af41-f22ce524e002"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllPotential}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="0" width="52" height="21" uuid="3e597e8f-f9fb-4e15-a50a-f851d3ab7db7"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllbc20}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="0" width="52" height="21" uuid="c9327561-f67c-4cf0-8f65-56ca30bcad24"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllbc40}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="52" height="21" uuid="110e07af-1797-40b1-97f1-b3c16a1e2cb6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllbc60}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="0" width="52" height="21" uuid="7fbaf9d3-4591-4364-9890-fa860027a594"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllbc80}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="375" y="0" width="52" height="21" uuid="12d2e2af-22ed-4064-8329-17beef9dec13"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllDeal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="52" height="21" uuid="d59b39bf-006e-4471-9e7c-681f6efa2ccf"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllVip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="0" width="52" height="21" uuid="7500a083-882e-47c7-a1b7-80d117800227"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllDimondVip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="531" y="0" width="52" height="21" uuid="2b96b799-397c-414d-8f6a-678f470b3dd1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllCrownedVip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="583" y="0" width="52" height="21" uuid="f27e4291-8453-47ed-9e6a-215e51e165ef"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllConnected}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="635" y="0" width="52" height="21" uuid="d4b43b0b-33f8-443f-b36a-012104b4a541"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllProxyConnected}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="687" y="0" width="52" height="21" uuid="ed5cc7e4-cdd7-487e-a64a-91a5b02beb19"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllNoResponse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="739" y="0" width="52" height="21" uuid="271be07e-afea-4d8b-a13d-cb4a2602908c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllClosed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="791" y="0" width="52" height="21" uuid="a9306d27-eaeb-44fd-a030-27ae1f4b26ff"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllBusySignal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="843" y="0" width="52" height="21" uuid="0941c32b-3df3-4c54-9594-8ede889b6374"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllRefused}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="895" y="0" width="52" height="21" uuid="9dc42b84-14fd-4565-9adf-d7129019f1ca"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllVacant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="947" y="0" width="51" height="21" uuid="9387c4a4-3017-4f43-a5b0-358a98cf7eca"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllFax}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="63" y="21" width="52" height="21" uuid="6063b58a-6a5a-44f3-a256-2e39ae23d982"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[均计]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="115" y="21" width="52" height="21" uuid="98aac7e4-f510-4421-895c-1f3cbd59cd24"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllPotential}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="21" width="52" height="21" uuid="59c03979-b2ee-4644-9619-3aa475eaf569"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllbc20}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="21" width="52" height="21" uuid="2b20d733-f6e9-40d0-8f12-ef4813c8c846"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllbc40}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="21" width="52" height="21" uuid="ab057204-a4cc-4f54-a236-60bd4dd4e568"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllbc60}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="21" width="52" height="21" uuid="37655f48-8ddc-4b61-a4d7-8f1a736772ab"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllbc80}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="375" y="21" width="52" height="21" uuid="e22bc4d1-31b9-41d4-a900-613fdab0ab0c"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllDeal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="21" width="52" height="21" uuid="0d605754-ef29-4d78-b090-10aab9985027"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllVip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="479" y="21" width="52" height="21" uuid="232c4d47-dcc6-4b31-8d7d-d9f084ddd0af"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllDimondVip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="531" y="21" width="52" height="21" uuid="8d9beed8-5558-45f2-9ddb-93fddcea451f"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllCrownedVip}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="583" y="21" width="52" height="21" uuid="d703198c-9577-4307-957d-a9ca66ec0e28"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllConnected}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="635" y="21" width="52" height="21" uuid="f0cbed74-27f8-4477-bb58-9b29a8563af1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllProxyConnected}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="687" y="21" width="52" height="21" uuid="3c744f1a-1406-4f58-bf19-05077ae879d9"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllNoResponse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="739" y="21" width="52" height="21" uuid="cad4b706-f684-4287-859e-0373e9db13b0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllClosed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="791" y="21" width="52" height="21" uuid="d7ccfe99-0591-4042-b1d4-539b60bd97da"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllBusySignal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="843" y="21" width="52" height="21" uuid="8bd517de-0350-4487-a4b0-628063dd8b08"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None"/>
+				<textFieldExpression><![CDATA[$V{avgAllRefused}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="895" y="21" width="52" height="21" uuid="718db701-9588-4472-a1b2-b2025266074d"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllVacant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="947" y="21" width="51" height="21" uuid="ba2db046-8371-48d6-bf54-0b5b02ba8632"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllFax}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-19" y="0" width="82" height="42" uuid="3f7b9bdf-d6a3-41b5-aa83-44340a9f94b0"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="998" y="0" width="52" height="21" uuid="21636a20-3599-4a68-9ee4-fc62d5bfa72e"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{sumAllReAssign}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="998" y="21" width="52" height="21" uuid="0b363187-2436-45f7-9bed-fa4e5e448fb5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{avgAllReAssign}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

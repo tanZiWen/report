@@ -1,0 +1,56 @@
+## global ##
+app.name=report
+app.description=${app.name} is a business report application
+gloable.enviroment=production
+
+## mongodb ##
+mongo.crm.name=crm
+mongo.crm.host=localhost
+mongo.crm.username=prosnav
+mongo.crm.password=prosnav
+mongo.upm.name=upm
+mongo.upm.host=localhost
+mongo.upm.username=prosnav
+mongo.upm.password=prosnav
+mongo.report.name=report
+mongo.report.host=localhost
+mongo.report.username=prosnav
+mongo.report.password=prosnav
+
+## server settings ##
+server.port=8080
+server.address=
+server.sessionTimeout=86400
+server.context-path=/report
+server.servlet-path=
+
+session.exclude=/login,/logout,/static,/public,/error,/timeout
+session.check=true
+
+## freeMarker ##
+spring.freemarker.suffix=.htm
+spring.freemarker.requestContextAttribute=context
+
+# REDIS (RedisProperties)
+spring.redis.host=localhost
+spring.redis.port=6379
+spring.redis.pool.max-idle=8
+spring.redis.pool.min-idle=0
+spring.redis.pool.max-active=8
+spring.redis.pool.max-wait=-1
+
+#special
+endpoints.autoconfig.id=autoconfigReport
+endpoints.beans.id=beansReport
+endpoints.configprops.id=configpropsReport
+endpoints.dump.id=dumpReport
+endpoints.env.id=envReport
+endpoints.health.id=healthReport
+endpoints.info.id=infoReport
+endpoints.mappings.id=mappingsReport
+endpoints.metrics.id=metricsReport
+endpoints.shutdown.id=shutdownReport
+endpoints.trace.id=traceReport
+endpoints.shutdown.enabled=false
+shell.ssh.enabled=false
+shell.telnet.enabled=false
